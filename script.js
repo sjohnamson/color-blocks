@@ -18,7 +18,11 @@ $('#yellow-btn').on('click', addYellowBlock)
 
 
 // create handler for buttons  to reference deleteBlock function
-$('#red-btn').on('click', deleteRed)
+$('#blocks').on('click', '.red-fill', deleteRed)
+$('#blocks').on('click', '.blue-fill', deleteBlue)
+$('#blocks').on('click', '.green-fill', deleteGreen)
+$('#blocks').on('click', '.yellow-fill', deleteYellow)
+
 }
 
 // function to add color blocks
@@ -46,4 +50,19 @@ function addYellowBlock() {
     `)
 }
 
-function deleteRed
+// functions to delete color blocks
+function deleteRed() {
+    $(this).remove()
+}
+
+function deleteBlue() {
+    $(this).remove()
+}
+
+function deleteGreen() {
+    $(this).remove()
+}
+
+function deleteYellow() {
+    $(this).remove()
+}
