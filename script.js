@@ -7,12 +7,9 @@ function onReady() {
     // create handler for buttons to reference addBlock functions and count functions
     $('#red-btn').on('click', addRedBlock).on('click', countRed);
 
-
     $('#blue-btn').on('click', addBlueBlock).on('click', countBlue);
 
-
     $('#green-btn').on('click', addGreenBlock).on('click', countGreen);
-
 
     $('#yellow-btn').on('click', addYellowBlock).on('click', countYellow);
 
@@ -28,7 +25,7 @@ function onReady() {
 
 }
 
-// function to add color blocks
+// functions to add color blocks
 function addRedBlock() {
     $('#blocks').append(`
     <div class="block red-fill"></div>
@@ -77,7 +74,6 @@ function countYellow() {
         return Number(val) + 1
     });
 }
-
 
 // functions to delete color blocks
 function deleteRed() {
