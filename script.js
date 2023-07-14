@@ -4,28 +4,27 @@ $(document).ready(onReady)
 
 
 function onReady() {
-// create handler for red to reference addBlock function
-$('#red-btn').on('click', addRedBlock);
-$('#red-btn').on('click', countRed);
-
-// // create handler for blue to reference addBlock function
-$('#blue-btn').on('click', addBlueBlock);
-$('#blue-btn').on('click', countBlue);
-
-// // create handler for green to reference addBlock function
-$('#green-btn').on('click', addGreenBlock);
-$('#green-btn').on('click', countGreen);
-
-// // create handler for yellow to reference addBlock function
-$('#yellow-btn').on('click', addYellowBlock);
-$('#yellow-btn').on('click', countYellow);
+// create handler for buttons to reference addBlock functions and count functions
+$('#red-btn').on('click', addRedBlock).on('click', countRed);
 
 
-// create handler for buttons  to reference deleteBlock function
-// $('#blocks').on('click', '.red-fill', deleteRed)
-// $('#blocks').on('click', '.blue-fill', deleteBlue)
-// $('#blocks').on('click', '.green-fill', deleteGreen)
-// $('#blocks').on('click', '.yellow-fill', deleteYellow)
+$('#blue-btn').on('click', addBlueBlock).on('click', countBlue);
+
+
+$('#green-btn').on('click', addGreenBlock).on('click', countGreen);
+
+
+$('#yellow-btn').on('click', addYellowBlock).on('click', countYellow);
+
+
+// create handler for buttons  to reference deleteBlock functions and subtractCount functions
+$('#blocks').on('click', '.red-fill', deleteRed).on('click', '.red-fill', subtractRedCount);
+
+$('#blocks').on('click', '.blue-fill', deleteBlue).on('click', '.blue-fill', subtractBlueCount);
+
+$('#blocks').on('click', '.green-fill', deleteGreen).on('click', '.green-fill', subtractGreenCount);
+
+$('#blocks').on('click', '.yellow-fill', deleteYellow).on('click', '.yellow-fill', subtractYellowCount);
 
 }
 
@@ -81,18 +80,43 @@ function countYellow() {
 
 
 // functions to delete color blocks
-// function deleteRed() {
-//     $(this).remove()
-// }
+function deleteRed() {
+    $(this).remove()
+}
 
-// function deleteBlue() {
-//     $(this).remove()
-// }
+function deleteBlue() {
+    $(this).remove()
+}
 
-// function deleteGreen() {
-//     $(this).remove()
-// }
+function deleteGreen() {
+    $(this).remove()
+}
 
-// function deleteYellow() {
-//     $(this).remove()
-// }
+function deleteYellow() {
+    $(this).remove()
+}
+
+// Functions to subtract the block counters
+function subtractRedCount() {
+    $('#red-count').html(function (i, val) {
+        return val * 1 - 1 
+    });
+}
+
+function subtractBlueCount() {
+    $('#blue-count').html(function (i, val) {
+        return val * 1 - 1 
+    });
+}
+
+function subtractGreenCount() {
+    $('#green-count').html(function (i, val) {
+        return val * 1 - 1 
+    });
+}
+
+function subtractYellowCount() {
+    $('#yellow-count').html(function (i, val) {
+        return val * 1 - 1 
+    });
+}
