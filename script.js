@@ -5,13 +5,15 @@ $(document).ready(onReady)
 
 function onReady() {
     // create handler for buttons to reference addBlock functions and count functions
+    // Red and blue have two handlers for the same on'click' event
     $('#red-btn').on('click', addRedBlock).on('click', countRed);
 
     $('#blue-btn').on('click', addBlueBlock).on('click', countBlue);
 
-    $('#green-btn').on('click', addGreenBlock).on('click', countGreen);
+    // Green and Yellow have double jQuery events within one handler
+    $('#green-btn').on('click', addGreenBlock)
 
-    $('#yellow-btn').on('click', addYellowBlock).on('click', countYellow);
+    $('#yellow-btn').on('click', addYellowBlock)
 
 
     // create handler for buttons  to reference deleteBlock functions and subtractCount functions
@@ -19,9 +21,9 @@ function onReady() {
 
     $('#blocks').on('click', '.blue-fill', deleteBlue).on('click', '.blue-fill', subtractBlueCount);
 
-    $('#blocks').on('click', '.green-fill', deleteGreen).on('click', '.green-fill', subtractGreenCount);
+    $('#blocks').on('click', '.green-fill', deleteGreen)
 
-    $('#blocks').on('click', '.yellow-fill', deleteYellow).on('click', '.yellow-fill', subtractYellowCount);
+    $('#blocks').on('click', '.yellow-fill', deleteYellow)
 
 }
 
@@ -38,16 +40,26 @@ function addBlueBlock() {
     `)
 }
 
+
 function addGreenBlock() {
     $('#blocks').append(`
     <div class="block green-fill"></div>
-    `)
+    `);
+    $('#green-count').html(function (i, val) {
+        return Number(val) + 1
+    });
 }
 
+// different way to add
+let yellowCount =1;
 function addYellowBlock() {
     $('#blocks').append(`
     <div class="block yellow-fill"></div>
-    `)
+    `);
+    $('#yellow-count').empty()
+    yellowCount++
+    console.log(yellowCount)
+    $('#yellow-count').append(yellowCount)
 }
 
 // functions to add to the color block counters
@@ -63,17 +75,11 @@ function countBlue() {
     });
 }
 
-function countGreen() {
-    $('#green-count').html(function (i, val) {
-        return Number(val) + 1
-    });
-}
-
-function countYellow() {
-    $('#yellow-count').html(function (i, val) {
-        return Number(val) + 1
-    });
-}
+// function countGreen() {
+//     $('#green-count').html(function (i, val) {
+//         return Number(val) + 1
+//     });
+// }
 
 // functions to delete color blocks
 function deleteRed() {
@@ -85,11 +91,18 @@ function deleteBlue() {
 }
 
 function deleteGreen() {
-    $(this).remove()
+    $(this).remove();
+    $('#green-count').html(function (i, val) {
+        return val - 1
+    });
 }
 
 function deleteYellow() {
-    $(this).remove()
+    $(this).remove();
+    $('#yellow-count').empty()
+    yellowCount--
+    console.log(yellowCount)
+    $('#yellow-count').append(yellowCount)   
 }
 
 // Functions to subtract the block counters
@@ -105,14 +118,3 @@ function subtractBlueCount() {
     });
 }
 
-function subtractGreenCount() {
-    $('#green-count').html(function (i, val) {
-        return val - 1
-    });
-}
-
-function subtractYellowCount() {
-    $('#yellow-count').html(function (i, val) {
-        return val - 1
-    });
-}
